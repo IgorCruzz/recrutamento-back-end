@@ -43,4 +43,18 @@ describe('Activation', () => {
     expect(activation.created_at).toBeTruthy()
     expect(activation.updated_at).toBeTruthy()
   })
+
+  it('should be able to find an user by the Code and show the User relation', async () => {
+    const user = await getRepository(User).save({ email: 'user@mail.com' })
+
+    const activation = await activationRepository.create({
+      user_id: user.id,
+      code: 'code_generated',
+    })
+
+    const res = await activationRepository.findCode(activation.code)
+
+    expect(res).toBeTruthy()
+    expect(res.user.id).toBeTruthy()
+  })
 })
