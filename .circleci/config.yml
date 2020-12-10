@@ -18,3 +18,7 @@ jobs:
           command: |
             ls -al
             echo '^^Thats looks familiar^^'
+      - run:
+          name: Running in a Unique Container
+          command: |
+            nove -v
