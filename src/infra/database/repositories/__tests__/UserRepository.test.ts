@@ -54,4 +54,15 @@ describe('User', () => {
 
     expect(user).toEqual(undefined)
   })
+
+  it('should be able to update an password', async () => {
+    const user = await getRepository(User).save({ email: 'user@mail.com' })
+
+    const res = await userRepository.updatePassword({
+      id: user.id,
+      password: 'password',
+    })
+
+    expect(res).toBeTruthy()
+  })
 })
