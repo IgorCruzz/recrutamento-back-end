@@ -15,7 +15,15 @@ export class DbCreateUserPassword implements ICreateUserPassword {
   ): Promise<ICreateUserPasswordResult> {
     const { code, password } = data
 
-    await this.findByActivationCodeRepository.findCode(code)
+    const findUserByCode = await this.findByActivationCodeRepository.findCode(
+      code
+    )
+
+    if (!findUserByCode)
+      return {
+        error: 'Porfavor, verifique se o seu código está correto.',
+      }
+
     return await null
   }
 }
