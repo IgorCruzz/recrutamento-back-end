@@ -11,14 +11,11 @@ export class User {
   @PrimaryGeneratedColumn('increment')
   id: number
 
-  @Column()
-  name: string
-
   @Column({ unique: true })
   email: string
 
   @Column()
-  password_hash: string
+  password_hash?: null | string
 
   @CreateDateColumn()
   created_at: Date

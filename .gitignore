@@ -8,6 +8,8 @@ lerna-debug.log*
 node_modules
 dist
 coverage
+data
+.env
 
 
 # Diagnostic reports (https://nodejs.org/api/report.html)

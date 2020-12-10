@@ -2,11 +2,15 @@ import {
   ICreateUser,
   IUserModel,
 } from 'data/protocols/database/user/CreateUser.interface'
+import { getRepository } from 'typeorm'
+import { User } from '../entities/User.entity'
 
 export class UserRepository implements ICreateUser {
-  async(email: string): Promise<IUserModel> {
-    const orm = getRepository(User)
+  private readonly UserRepository = getRepository(User)
 
-    await orm.save(email)
+  async create(email: string): Promise<IUserModel> {
+    return await this.UserRepository.save({
+      email,
+    })
   }
 }
