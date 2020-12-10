@@ -1,16 +1,5 @@
 version: 2.1
 jobs:
-  First-Job:
-    docker:
-      - image: alpine:3.7
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD
-    steps:
-      - run:
-          name: Primeira Etapa
-          command: |
-            echo 'Primeira Etapa'
   Second-Job:
     docker:
       - image: alpine:3.7
@@ -23,46 +12,10 @@ jobs:
           name: Segunda Etapa
           command: |
             ls -al
-            echo 'Segunda Etapa'
-  Terceira-Etapa:
-    docker:
-      - image: circleci/node:10-browsers
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD
-    steps:
-      - run:
-          name: Terceira Etapa
-          command: |
-            node -v
-  Quarta-Etapa:
-    docker:
-      - image: alpine:3.7
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD
-    steps:
-      - run:
-          name: Approval Complete
-          command: |
-            echo 'Do work once the approval has completed'
-
+            yarn start:dev
 workflows:
   version: 2
   Example_Workflow:
     jobs:
       - First-Job
-      - Second-Job:
-          requires:
-            - First-Job
-      - Terceira-Etapa:
-          requires:
-            - First-Job
-      - Hold-For-Approval:
-          type: approval
-          requires:
-            - Second-Job
-            - Terceira-Etapa
-      - Quarta-Etapa:
-          requires:
-            - Hold-For-Approval
+
