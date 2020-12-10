@@ -1,4 +1,5 @@
 import { ICreateActivationRepository } from '@/data/protocols/database/activation/createActivation.interface'
+import { ICreateUserRepository } from '@/data/protocols/database/user/CreateUser.interface'
 import { IFindUserByEmailRepository } from '@/data/protocols/database/user/FindUserByEmail.interface'
 import {
   ICreateUser,
@@ -8,6 +9,7 @@ import {
 export class DbCreateUser implements ICreateUser {
   constructor(
     private readonly findUserByEmailRepository: IFindUserByEmailRepository,
+    private readonly createUserRepository: ICreateUserRepository,
     private readonly createActivationRepository: ICreateActivationRepository
   ) {}
 
@@ -16,11 +18,16 @@ export class DbCreateUser implements ICreateUser {
 
     if (findUser) return { error: 'Já existe um usuário com este e-mail.' }
 
+    const newUser = await this.createUserRepository.create(email)
+
     await this.createActivationRepository.create({
-      user_id: 1,
+      user_id: newUser.id,
       code: 'generated_code',
     })
 
-    return await null
+    return {
+      id: newUser.id,
+      email: newUser.email,
+    }
   }
 }
