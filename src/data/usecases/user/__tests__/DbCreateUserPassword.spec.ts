@@ -28,4 +28,32 @@ describe('DbCreateUserPassword  ( DATA )', () => {
 
     expect(res).toHaveBeenCalledWith('code_generated')
   })
+
+  it('should return an error message if FindByActivationCodeRepository returns null', async () => {
+    jest
+      .spyOn(findByActivationCodeRepository, 'findCode')
+      .mockResolvedValue(undefined)
+
+    const res = await dbCreateUserPassword.createPassword({
+      code: 'code_generated',
+      password: 'password',
+    })
+
+    expect(res).toEqual({
+      error: 'Porfavor, verifique se o seu código está correto.',
+    })
+  })
+
+  test('should throw if FindByActivationCodeRepository throws', async () => {
+    jest
+      .spyOn(findByActivationCodeRepository, 'findCode')
+      .mockImplementationOnce(() => {
+        throw new Error()
+      })
+    const promise = dbCreateUserPassword.createPassword({
+      code: 'code_generated',
+      password: 'password',
+    })
+    await expect(promise).rejects.toThrow()
+  })
 })
