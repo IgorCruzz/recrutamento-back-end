@@ -30,7 +30,7 @@ workflows:
   Example_Workflow:
     jobs:
       - install
-      - app:
+      - start:
           requires:
             - install
 
