@@ -78,4 +78,39 @@ describe('DbCreateUser  ( DATA )', () => {
       email: 'user@mail.com',
     })
   })
+
+  test('should throw if AddAccountRepository throws', async () => {
+    jest
+      .spyOn(findUserByEmailRepository, 'findMail')
+      .mockImplementationOnce(() => {
+        throw new Error()
+      })
+    const promise = dBCreateUser.createUser('user@mail.com')
+    await expect(promise).rejects.toThrow()
+  })
+
+  test('should throw if createActivationRepository throws', async () => {
+    jest
+      .spyOn(findUserByEmailRepository, 'findMail')
+      .mockResolvedValue(undefined)
+    jest
+      .spyOn(createActivationRepository, 'create')
+      .mockImplementationOnce(() => {
+        throw new Error()
+      })
+    const promise = dBCreateUser.createUser('user@mail.com')
+    await expect(promise).rejects.toThrow()
+  })
+
+  test('should throw if createUserRepository throws', async () => {
+    jest
+      .spyOn(findUserByEmailRepository, 'findMail')
+      .mockResolvedValue(undefined)
+
+    jest.spyOn(createUserRepository, 'create').mockImplementationOnce(() => {
+      throw new Error()
+    })
+    const promise = dBCreateUser.createUser('user@mail.com')
+    await expect(promise).rejects.toThrow()
+  })
 })
