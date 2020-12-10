@@ -23,7 +23,27 @@ describe('User', () => {
     await getRepository(User).query(`DELETE FROM users`)
   })
 
-  it('2', () => {
-    expect(true).toBeTruthy()
+  describe('Create User', () => {
+    it('/POST -> should return a new user', async () => {
+      await request(app)
+        .post('/user')
+        .send({
+          email: 'user@mail.com',
+        })
+        .expect(201)
+    })
+
+    it('/POST -> should return 400 if has already an user with email passed', async () => {
+      await getRepository(User).save({
+        email: 'user@mail.com',
+      })
+
+      await request(app)
+        .post('/user')
+        .send({
+          email: 'user@mail.com',
+        })
+        .expect(400)
+    })
   })
 })

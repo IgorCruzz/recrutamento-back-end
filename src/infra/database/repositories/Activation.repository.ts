@@ -7,9 +7,9 @@ import { getRepository } from 'typeorm'
 import { Activation } from '../entities/Activation.entity'
 
 export class ActivationRepository implements ICreateActivationRepository {
-  private readonly ActivationRepository = getRepository(Activation)
-
   async create(data: ICreateActivationDTO): Promise<IActivationModel> {
-    return await this.ActivationRepository.save(data)
+    const orm = getRepository(Activation)
+
+    return await orm.save(data)
   }
 }

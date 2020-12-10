@@ -7,16 +7,18 @@ import { User } from '../entities/User.entity'
 
 export class UserRepository
   implements ICreateUserRepository, IFindUserByEmailRepository {
-  private readonly UserRepository = getRepository(User)
-
   async create(email: string): Promise<IUserModel> {
-    return await this.UserRepository.save({
+    const orm = getRepository(User)
+
+    return await orm.save({
       email,
     })
   }
 
   async findMail(email: string): Promise<IUserModel> {
-    return await this.UserRepository.findOne({
+    const orm = getRepository(User)
+
+    return await orm.findOne({
       email,
     })
   }
