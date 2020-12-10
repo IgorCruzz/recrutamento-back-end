@@ -55,7 +55,7 @@ describe('User', () => {
     expect(user.updated_at).toBeTruthy()
   })
 
-  it('should return undefined not find any user with email passed', async () => {
+  it('should return undefined if not find any user with email passed', async () => {
     const user = await userRepository.findMail('user@mail.com')
 
     expect(user).toEqual(undefined)
