@@ -12,7 +12,7 @@ jobs:
           name: Test
           command: |
             yarn
-            yarn test:cov
+            yarn test:ci
 workflows:
   version: 2
   Example_Workflow:

@@ -20,6 +20,7 @@
     "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run",
     "test:staged": "npm test -- --findRelatedTests",
     "test:cov": "npm test -- --coverage",
+    "test:ci": "npm test -- --coverage -c jest-unit-config.js",
     "test:coveralls": "yarn test:cov && coveralls < coverage/lcov.info",
     "pretest:integration": "NODE_ENV=test yarn migration:run",
     "test:integration": "NODE_ENV=test yarn test -- --watch -c jest-integration-config.js"
