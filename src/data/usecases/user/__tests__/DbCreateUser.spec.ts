@@ -1,9 +1,11 @@
 import { CreateActivationStub } from '@/data/mocks/activationRepo.mock'
+import { GenerateCodeStub } from '@/data/mocks/crypto.mock'
 import { SendGridAdapterStub } from '@/data/mocks/sendgrid.mock'
 import {
   CreateUserRepositoryStub,
   FindUserByEmailRepositoryStub,
 } from '@/data/mocks/userRepo.mock'
+import { IGenerateCode } from '@/data/protocols/cryptoAdapter/GenerateCode.interface'
 import { ICreateActivationRepository } from '@/data/protocols/database/activation/createActivation.interface'
 import { ICreateUserRepository } from '@/data/protocols/database/user/CreateUser.interface'
 import { IFindUserByEmailRepository } from '@/data/protocols/database/user/FindUserByEmail.interface'
@@ -16,6 +18,7 @@ let findUserByEmailRepository: IFindUserByEmailRepository
 let createActivationRepository: ICreateActivationRepository
 let createUserRepository: ICreateUserRepository
 let activationUser: IActivationUser
+let generateCode: IGenerateCode
 
 describe('DbCreateUser  ( DATA )', () => {
   beforeEach(() => {
@@ -23,11 +26,13 @@ describe('DbCreateUser  ( DATA )', () => {
     createActivationRepository = new CreateActivationStub()
     findUserByEmailRepository = new FindUserByEmailRepositoryStub()
     createUserRepository = new CreateUserRepositoryStub()
+    generateCode = new GenerateCodeStub()
     dBCreateUser = new DbCreateUser(
       findUserByEmailRepository,
       createUserRepository,
       createActivationRepository,
-      activationUser
+      activationUser,
+      generateCode
     )
   })
 
@@ -68,7 +73,7 @@ describe('DbCreateUser  ( DATA )', () => {
 
     await dBCreateUser.createUser('user@mail.com')
 
-    expect(res).toHaveBeenCalledWith({ user_id: 1, code: 'generated_code' })
+    expect(res).toHaveBeenCalledWith({ user_id: 1, code: 'code_generated' })
   })
 
   it('should return an user registered', async () => {
@@ -96,6 +101,18 @@ describe('DbCreateUser  ( DATA )', () => {
       email: 'user@mail.com',
       code: 'code_generated',
     })
+  })
+
+  it('should call generateCode with success', async () => {
+    jest
+      .spyOn(findUserByEmailRepository, 'findMail')
+      .mockResolvedValue(undefined)
+
+    const res = jest.spyOn(generateCode, 'generate')
+
+    await dBCreateUser.createUser('user@mail.com')
+
+    expect(res).toHaveBeenCalled()
   })
 
   test('should throw if AddAccountRepository throws', async () => {

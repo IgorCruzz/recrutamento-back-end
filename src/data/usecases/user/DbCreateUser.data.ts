@@ -1,3 +1,4 @@
+import { IGenerateCode } from '@/data/protocols/cryptoAdapter/GenerateCode.interface'
 import { ICreateActivationRepository } from '@/data/protocols/database/activation/createActivation.interface'
 import { ICreateUserRepository } from '@/data/protocols/database/user/CreateUser.interface'
 import { IFindUserByEmailRepository } from '@/data/protocols/database/user/FindUserByEmail.interface'
@@ -12,7 +13,8 @@ export class DbCreateUser implements ICreateUser {
     private readonly findUserByEmailRepository: IFindUserByEmailRepository,
     private readonly createUserRepository: ICreateUserRepository,
     private readonly createActivationRepository: ICreateActivationRepository,
-    private readonly activationUser: IActivationUser
+    private readonly activationUser: IActivationUser,
+    private readonly generateCode: IGenerateCode
   ) {}
 
   async createUser(email: string): Promise<ICreateUserResult> {
@@ -24,7 +26,7 @@ export class DbCreateUser implements ICreateUser {
 
     const activation = await this.createActivationRepository.create({
       user_id: newUser.id,
-      code: 'generated_code',
+      code: this.generateCode.generate(),
     })
 
     await this.activationUser.activationUser({

@@ -10,6 +10,7 @@ import { IController } from '../../../presentation/protocols'
 import { CreateUserController } from '../../../presentation/controllers/user/CreateUser.controller'
 import { SignupValidation } from '../../../infra/yupAdapter/Signup.validator'
 import { ValidatorDecorator } from '../../../main/decorator/validator.decorator'
+import { CryptAdapter } from '../../../infra/cryptoAdapter/crypto.adapter'
 
 const routes = Router()
 
@@ -17,12 +18,14 @@ const createUserUseCase = (): ICreateUser => {
   const userRepository = new UserRepository()
   const activationRepository = new ActivationRepository()
   const activationUserMail = new SendGridAdapter()
+  const cryptAdapter = new CryptAdapter()
 
   return new DbCreateUser(
     userRepository,
     userRepository,
     activationRepository,
-    activationUserMail
+    activationUserMail,
+    cryptAdapter
   )
 }
 
