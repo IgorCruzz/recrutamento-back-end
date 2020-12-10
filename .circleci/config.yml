@@ -9,10 +9,10 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Iniciar o aplicativo
+          name: Test
           command: |
             yarn
-            yarn start:dev
+            yarn test:cov
 workflows:
   version: 2
   Example_Workflow:
