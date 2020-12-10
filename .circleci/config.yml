@@ -21,4 +21,4 @@ jobs:
       - run:
           name: Running in a Unique Container
           command: |
-            nove -v
+            node -v
