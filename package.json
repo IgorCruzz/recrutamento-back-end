@@ -25,6 +25,9 @@
     "test:integration": "NODE_ENV=test yarn test -- --watch -c jest-integration-config.js"
   },
   "devDependencies": {
+    "@sendgrid/mail": "^7.4.0",
+    "@types/bcryptjs": "^2.4.2",
+    "@types/dotenv": "^8.2.0",
     "@types/jest": "^26.0.14",
     "@types/module-alias": "^2.0.0",
     "@types/node": "^14.11.10",
@@ -32,6 +35,7 @@
     "@typescript-eslint/eslint-plugin": "^4.7.0",
     "@typescript-eslint/parser": "^4.7.0",
     "coveralls": "^3.1.0",
+    "dotenv": "^8.2.0",
     "eslint": "^7.11.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-config-standard": "^14.1.1",
@@ -41,12 +45,17 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
+    "express": "^4.17.1",
     "git-commit-msg-linter": "^3.0.0",
     "husky": "^4.3.0",
     "jest": "^26.5.3",
+    "jest-mock-extended": "^1.0.10",
     "lint-staged": "^10.4.2",
     "mockdate": "^3.0.2",
+    "nodemon": "^2.0.6",
     "prettier": "^2.1.2",
+    "rimraf": "^3.0.2",
+    "rxjs": "^6.5.4",
     "sucrase": "^3.16.0",
     "supertest": "^5.0.0",
     "ts-jest": "^26.4.1",
@@ -54,35 +63,26 @@
     "ts-node-dev": "^1.0.0-pre.44",
     "tsconfig-paths": "^3.9.0",
     "typeorm-test-transactions": "^1.11.1",
-    "typescript": "^4.0.3",
-    "@sendgrid/mail": "^7.4.0",
-    "@types/bcryptjs": "^2.4.2",
-    "@types/dotenv": "^8.2.0",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "jest-mock-extended": "^1.0.10",
-    "nodemon": "^2.0.6",
-    "rimraf": "^3.0.2",
-    "rxjs": "^6.5.4"
+    "typescript": "^4.0.3"
   },
   "dependencies": {
-    "@types/yup": "^0.29.4",
-    "reflect-metadata": "^0.1.13",
+    "@types/cors": "^2.8.9",
     "@types/express": "^4.17.8",
     "@types/jsonwebtoken": "^8.5.0",
     "@types/swagger-ui-express": "^4.1.2",
+    "@types/yup": "^0.29.4",
     "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "jsonwebtoken": "^8.5.1",
     "module-alias": "^2.2.2",
     "pg": "^8.5.1",
-    "typeorm": "^0.2.25",
-    "swagger-ui-express": "^4.1.5",
+    "reflect-metadata": "^0.1.13",
     "sqlite3": "^5.0.0",
-    "yup": "^0.29.3",
-    "cors": "^2.8.5"
+    "swagger-ui-express": "^4.1.5",
+    "typeorm": "^0.2.25",
+    "yup": "^0.29.3"
   },
   "_moduleAliases": {
     "@": "dist"
   }
-
 }
