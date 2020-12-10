@@ -1,6 +1,10 @@
 import { CreateActivationStub } from '@/data/mocks/activationRepo.mock'
-import { FindUserByEmailRepositoryStub } from '@/data/mocks/userRepo.mock'
+import {
+  CreateUserRepositoryStub,
+  FindUserByEmailRepositoryStub,
+} from '@/data/mocks/userRepo.mock'
 import { ICreateActivationRepository } from '@/data/protocols/database/activation/createActivation.interface'
+import { ICreateUserRepository } from '@/data/protocols/database/user/CreateUser.interface'
 import { IFindUserByEmailRepository } from '@/data/protocols/database/user/FindUserByEmail.interface'
 import { ICreateUser } from '@/domain/usecases/user/CreateUser.domain'
 import { DbCreateUser } from '../DbCreateUser.data'
@@ -8,13 +12,16 @@ import { DbCreateUser } from '../DbCreateUser.data'
 let dBCreateUser: ICreateUser
 let findUserByEmailRepository: IFindUserByEmailRepository
 let createActivationRepository: ICreateActivationRepository
+let createUserRepository: ICreateUserRepository
 
 describe('DbCreateUser  ( DATA )', () => {
   beforeEach(() => {
     createActivationRepository = new CreateActivationStub()
     findUserByEmailRepository = new FindUserByEmailRepositoryStub()
+    createUserRepository = new CreateUserRepositoryStub()
     dBCreateUser = new DbCreateUser(
       findUserByEmailRepository,
+      createUserRepository,
       createActivationRepository
     )
   })
@@ -37,15 +44,15 @@ describe('DbCreateUser  ( DATA )', () => {
     expect(res).toEqual({ error: 'Já existe um usuário com este e-mail.' })
   })
 
-  it('should call createActivation with success', async () => {
+  it('should call createUserRepository with success', async () => {
     jest
       .spyOn(findUserByEmailRepository, 'findMail')
       .mockResolvedValue(undefined)
-    const res = jest.spyOn(createActivationRepository, 'create')
+    const res = jest.spyOn(createUserRepository, 'create')
 
     await dBCreateUser.createUser('user@mail.com')
 
-    expect(res).toHaveBeenCalledWith({ user_id: 1, code: 'generated_code' })
+    expect(res).toHaveBeenCalledWith('user@mail.com')
   })
 
   it('should call createActivationRepository with success', async () => {
@@ -57,5 +64,18 @@ describe('DbCreateUser  ( DATA )', () => {
     await dBCreateUser.createUser('user@mail.com')
 
     expect(res).toHaveBeenCalledWith({ user_id: 1, code: 'generated_code' })
+  })
+
+  it('should return an user registered', async () => {
+    jest
+      .spyOn(findUserByEmailRepository, 'findMail')
+      .mockResolvedValue(undefined)
+
+    const res = await dBCreateUser.createUser('user@mail.com')
+
+    expect(res).toEqual({
+      id: 1,
+      email: 'user@mail.com',
+    })
   })
 })
