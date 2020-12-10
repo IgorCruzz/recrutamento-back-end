@@ -1,5 +1,8 @@
-import app from './config/app';
+import app from './config/app'
+import { connection } from '../main/config/connection'
 
-app.listen(3333, () => {
-  console.log('Server is running on port 3333');
-});
+connection.create()
+
+app.listen(process.env.PORT || 3333, () => {
+  console.log('Server is running')
+})
