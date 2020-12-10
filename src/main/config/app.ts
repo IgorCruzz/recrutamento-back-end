@@ -7,8 +7,4 @@ const app = express()
 
 app.use(express.json())
 
-app.get('/', (req: Request, res: Response) => {
-  return res.json({ ok: 'ok' })
-})
-
 export default app
