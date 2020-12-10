@@ -1,4 +1,5 @@
 import { CreateActivationStub } from '@/data/mocks/activationRepo.mock'
+import { SendGridAdapterStub } from '@/data/mocks/sendgrid.mock'
 import {
   CreateUserRepositoryStub,
   FindUserByEmailRepositoryStub,
@@ -6,6 +7,7 @@ import {
 import { ICreateActivationRepository } from '@/data/protocols/database/activation/createActivation.interface'
 import { ICreateUserRepository } from '@/data/protocols/database/user/CreateUser.interface'
 import { IFindUserByEmailRepository } from '@/data/protocols/database/user/FindUserByEmail.interface'
+import { IActivationUser } from '@/data/protocols/sendGridAdapter/ActivationMail.interface'
 import { ICreateUser } from '@/domain/usecases/user/CreateUser.domain'
 import { DbCreateUser } from '../DbCreateUser.data'
 
@@ -13,16 +15,19 @@ let dBCreateUser: ICreateUser
 let findUserByEmailRepository: IFindUserByEmailRepository
 let createActivationRepository: ICreateActivationRepository
 let createUserRepository: ICreateUserRepository
+let activationUser: IActivationUser
 
 describe('DbCreateUser  ( DATA )', () => {
   beforeEach(() => {
+    activationUser = new SendGridAdapterStub()
     createActivationRepository = new CreateActivationStub()
     findUserByEmailRepository = new FindUserByEmailRepositoryStub()
     createUserRepository = new CreateUserRepositoryStub()
     dBCreateUser = new DbCreateUser(
       findUserByEmailRepository,
       createUserRepository,
-      createActivationRepository
+      createActivationRepository,
+      activationUser
     )
   })
 
@@ -76,6 +81,20 @@ describe('DbCreateUser  ( DATA )', () => {
     expect(res).toEqual({
       id: 1,
       email: 'user@mail.com',
+    })
+  })
+
+  it('should call  activationUser with success', async () => {
+    jest
+      .spyOn(findUserByEmailRepository, 'findMail')
+      .mockResolvedValue(undefined)
+    const res = jest.spyOn(activationUser, 'activationUser')
+
+    await dBCreateUser.createUser('user@mail.com')
+
+    expect(res).toHaveBeenCalledWith({
+      email: 'user@mail.com',
+      code: 'code_generated',
     })
   })
 
