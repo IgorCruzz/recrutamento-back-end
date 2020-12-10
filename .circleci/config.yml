@@ -1,4 +1,4 @@
-version: 2.1 //VERSÃO DO CIRCLECI
+version: 2.1
 jobs:
   First-Job:
     docker:
@@ -41,7 +41,7 @@ jobs:
         auth:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD
-     steps:
+    steps:
       - run:
           name: Approval Complete
           command: |
