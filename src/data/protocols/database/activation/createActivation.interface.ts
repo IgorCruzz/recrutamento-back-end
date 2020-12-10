@@ -1,6 +1,6 @@
 export interface ICreateActivationDTO {
   user_id: number
-  code: StaticRange
+  code: string
 }
 
 export interface ICreateActivationModel {

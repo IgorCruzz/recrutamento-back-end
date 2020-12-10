@@ -5,12 +5,6 @@ import { UserRepository } from '../User.repository'
 
 let userRepository: UserRepository
 
-describe('UserRepo', () => {
-  it('should be able create an User', () => {
-    expect(true).toBe(true)
-  })
-})
-
 jest.setTimeout(30000)
 
 describe('User', () => {
