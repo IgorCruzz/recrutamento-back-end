@@ -10,6 +10,8 @@ export class DbCreateUser implements ICreateUser {
   async createUser(email: string): Promise<ICreateUserResult> {
     const findUser = await this.findUserByEmail.findMail(email)
 
+    if (findUser) return { error: 'Já existe um usuário com este e-mail.' }
+
     return await null
   }
 }
