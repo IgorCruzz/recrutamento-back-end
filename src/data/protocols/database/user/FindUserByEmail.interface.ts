@@ -1,10 +1,4 @@
-export interface IUserModel {
-  id: number
-  email: string
-  password_hash?: string | null
-  created_at: Date
-  updated_at: Date
-}
+import { IUserModel } from '@/domain/models/User.model'
 
 export interface IFindUserByEmail {
   findMail(email: string): Promise<IUserModel>

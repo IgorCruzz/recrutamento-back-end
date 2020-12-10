@@ -1,7 +1,5 @@
-import {
-  ICreateUser,
-  IUserModel,
-} from '../protocols/database/user/CreateUser.interface'
+import { IUserModel } from '@/domain/models/User.model'
+import { ICreateUser } from '../protocols/database/user/CreateUser.interface'
 import { IFindUserByEmail } from '../protocols/database/user/FindUserByEmail.interface'
 
 export class CreateUserStub implements ICreateUser {
