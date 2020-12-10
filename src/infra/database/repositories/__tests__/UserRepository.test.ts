@@ -1,10 +1,9 @@
-import { ICreateUser } from '@/data/protocols/database/user/CreateUser.interface'
 import { connection } from '@/main/config/connection'
 import { getRepository } from 'typeorm'
 import { User } from '../../entities/User.entity'
 import { UserRepository } from '../User.repository'
 
-let userRepository: ICreateUser
+let userRepository: UserRepository
 
 describe('UserRepo', () => {
   it('should be able create an User', () => {
@@ -41,5 +40,24 @@ describe('User', () => {
     expect(user.password_hash).toEqual(undefined)
     expect(user.created_at).toBeTruthy()
     expect(user.updated_at).toBeTruthy()
+  })
+
+  it('should be able to find an User through their e-mail', async () => {
+    await getRepository(User).save({ email: 'user@mail.com' })
+
+    const user = await userRepository.findMail('user@mail.com')
+
+    expect(user).toBeTruthy()
+    expect(user.id).toBeTruthy()
+    expect(user.email).toEqual('user@mail.com')
+    expect(user.password_hash).toEqual(null)
+    expect(user.created_at).toBeTruthy()
+    expect(user.updated_at).toBeTruthy()
+  })
+
+  it('should return undefined not find any user with email passed', async () => {
+    const user = await userRepository.findMail('user@mail.com')
+
+    expect(user).toEqual(undefined)
   })
 })
