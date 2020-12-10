@@ -23,4 +23,10 @@ describe('DbCreateUser  ( DATA )', () => {
 
     expect(res).toHaveBeenCalledWith('user@mail.com')
   })
+
+  it('should be return an error message if has already an user with email passed', async () => {
+    const res = await dBCreateUser.createUser('user@mail.com')
+
+    expect(res).toEqual({ error: 'Já existe um usuário com este e-mail.' })
+  })
 })
