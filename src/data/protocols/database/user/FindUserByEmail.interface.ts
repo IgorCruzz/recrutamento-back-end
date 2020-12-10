@@ -1,5 +1,5 @@
 import { IUserModel } from '@/domain/models/User.model'
 
-export interface IFindUserByEmail {
+export interface IFindUserByEmailRepository {
   findMail(email: string): Promise<IUserModel>
 }

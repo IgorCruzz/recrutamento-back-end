@@ -1,12 +1,12 @@
-import { IFindUserByEmail } from '@/data/protocols/database/user/FindUserByEmail.interface'
-import {
-  ICreateUser,
-  IUserModel,
-} from 'data/protocols/database/user/CreateUser.interface'
+import { ICreateUserRepository } from '@/data/protocols/database/user/CreateUser.interface'
+import { IFindUserByEmailRepository } from '@/data/protocols/database/user/FindUserByEmail.interface'
+import { IUserModel } from '@/domain/models/User.model'
+
 import { getRepository } from 'typeorm'
 import { User } from '../entities/User.entity'
 
-export class UserRepository implements ICreateUser, IFindUserByEmail {
+export class UserRepository
+  implements ICreateUserRepository, IFindUserByEmailRepository {
   private readonly UserRepository = getRepository(User)
 
   async create(email: string): Promise<IUserModel> {

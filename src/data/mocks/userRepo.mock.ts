@@ -1,8 +1,8 @@
 import { IUserModel } from '@/domain/models/User.model'
-import { ICreateUser } from '../protocols/database/user/CreateUser.interface'
-import { IFindUserByEmail } from '../protocols/database/user/FindUserByEmail.interface'
+import { ICreateUserRepository } from '../protocols/database/user/CreateUser.interface'
+import { IFindUserByEmailRepository } from '../protocols/database/user/FindUserByEmail.interface'
 
-export class CreateUserStub implements ICreateUser {
+export class CreateUserRepositoryStub implements ICreateUserRepository {
   async create(email: string): Promise<IUserModel> {
     return Promise.resolve({
       id: 1,
@@ -14,7 +14,8 @@ export class CreateUserStub implements ICreateUser {
   }
 }
 
-export class FindUserByEmailStub implements IFindUserByEmail {
+export class FindUserByEmailRepositoryStub
+  implements IFindUserByEmailRepository {
   async findMail(email: string): Promise<IUserModel> {
     return Promise.resolve({
       id: 1,

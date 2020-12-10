@@ -1,5 +1,5 @@
 import { IUserModel } from '@/domain/models/User.model'
 
-export interface ICreateUser {
+export interface ICreateUserRepository {
   create(email: string): Promise<IUserModel>
 }

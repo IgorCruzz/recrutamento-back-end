@@ -5,6 +5,6 @@ export interface ICreateActivationDTO {
   code: string
 }
 
-export interface ICreateActivation {
+export interface ICreateActivationRepository {
   create(data: ICreateActivationDTO): Promise<IActivationModel>
 }
