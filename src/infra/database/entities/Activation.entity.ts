@@ -5,6 +5,7 @@ import {
   UpdateDateColumn,
   PrimaryColumn,
   JoinColumn,
+  OneToOne,
 } from 'typeorm'
 import { User } from './User.entity'
 
@@ -13,7 +14,8 @@ export class Activation {
   @PrimaryColumn()
   user_id: number
 
-  @JoinColumn({ name: 'users' })
+  @OneToOne(() => User)
+  @JoinColumn({ name: 'user_id' })
   user: User
 
   @Column()
