@@ -1,8 +1,9 @@
 Caso de sucesso ✅
 
 1.  Validar se existe um usuário com o código enviado pelo parametro.
-2.  Atualizar o password de NULL para uma senha válida.
-3.  Criar uma rota /PUT para criar uma senha.
+2.  Verifica se o código enviado pertence ao usuário que queria criar a senha.
+3.  Atualizar o password de NULL para uma senha válida.
+4.  Criar uma rota /PUT para criar uma senha.
 
 Exceções
 
