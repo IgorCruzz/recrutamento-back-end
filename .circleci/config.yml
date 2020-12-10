@@ -1,4 +1,4 @@
-version: 2.1
+version: 2.1 //VERSÃO DO CIRCLECI
 jobs:
   build:
     docker:
@@ -12,3 +12,8 @@ jobs:
           command: |
             echo 'Hello World!'
             echo 'This is the delivery pipeline'
+      - run:
+          name: Code Has Arrived
+          command: |
+            ls -al
+            echo '^^Thats looks familiar^^'
