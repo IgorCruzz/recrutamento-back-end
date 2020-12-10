@@ -1,6 +1,19 @@
 version: 2.1
 jobs:
-  app:
+  install:
+    docker:
+      - image: circleci/node:10-browsers
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD
+    steps:
+      - checkout
+      - run:
+          name: Iniciar o aplicativo
+          command: |
+            yarn
+
+  start:
     docker:
       - image: circleci/node:10-browsers
         auth:
@@ -16,5 +29,8 @@ workflows:
   version: 2
   Example_Workflow:
     jobs:
-      - app
+      - install
+      - app:
+          requires:
+            - install
 
