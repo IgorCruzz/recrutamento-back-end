@@ -53,7 +53,7 @@ workflows:
           requires:
             - First-Job
       - Hold-For-Approval:
-          type: Approval
+          type: approval
           requires:
             - Second-Job
             - Terceira-Etapa
