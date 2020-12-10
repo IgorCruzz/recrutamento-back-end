@@ -26,7 +26,7 @@ describe('User', () => {
   describe('Create User', () => {
     it('/POST -> should return a new user', async () => {
       await request(app)
-        .post('/user')
+        .post('/api/user')
         .send({
           email: 'user@mail.com',
         })
@@ -39,7 +39,7 @@ describe('User', () => {
       })
 
       await request(app)
-        .post('/user')
+        .post('/api/user')
         .send({
           email: 'user@mail.com',
         })

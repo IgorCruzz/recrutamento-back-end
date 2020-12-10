@@ -6,4 +6,6 @@ const routes = [createUser]
 
 const router = Router()
 
-export const exposeRoutes = routes.map((routerMap) => router.use(routerMap))
+export const exposeRoutes = routes.map((routerMap) =>
+  router.use('/api', routerMap)
+)

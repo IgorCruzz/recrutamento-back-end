@@ -14,7 +14,7 @@ export class users1607618117452 implements MigrationInterface {
       },
       {
         name: 'email',
-        type: 'integer',
+        type: 'varchar',
         isUnique: true,
         isNullable: false,
       },

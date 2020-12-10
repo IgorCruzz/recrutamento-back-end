@@ -14,7 +14,7 @@ export class activations1607622573615 implements MigrationInterface {
       },
       {
         name: 'code',
-        type: 'integer',
+        type: 'varchar',
         isUnique: true,
         isNullable: false,
       },
