@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  Second-Job:
+  app:
     docker:
       - image: alpine:3.7
         auth:
@@ -11,11 +11,10 @@ jobs:
       - run:
           name: Segunda Etapa
           command: |
-            ls -al
             yarn start:dev
 workflows:
   version: 2
   Example_Workflow:
     jobs:
-      - First-Job
+      - app
 
