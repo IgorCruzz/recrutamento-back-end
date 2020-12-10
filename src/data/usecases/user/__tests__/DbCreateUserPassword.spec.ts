@@ -24,6 +24,7 @@ describe('DbCreateUserPassword  ( DATA )', () => {
     await dbCreateUserPassword.createPassword({
       code: 'code_generated',
       password: 'password',
+      email: 'user@mail.com',
     })
 
     expect(res).toHaveBeenCalledWith('code_generated')
@@ -37,6 +38,7 @@ describe('DbCreateUserPassword  ( DATA )', () => {
     const res = await dbCreateUserPassword.createPassword({
       code: 'code_generated',
       password: 'password',
+      email: 'user@mail.com',
     })
 
     expect(res).toEqual({
@@ -53,7 +55,20 @@ describe('DbCreateUserPassword  ( DATA )', () => {
     const promise = dbCreateUserPassword.createPassword({
       code: 'code_generated',
       password: 'password',
+      email: 'user@mail.com',
     })
     await expect(promise).rejects.toThrow()
+  })
+
+  it('should return an error message if the code doesnt belongs to the user with the email passed', async () => {
+    const res = await dbCreateUserPassword.createPassword({
+      code: 'code_generated',
+      password: 'password',
+      email: 'wrongr@mail.com',
+    })
+
+    expect(res).toEqual({
+      error: 'Porfavor, verifique se o seu código está correto.',
+    })
   })
 })
