@@ -13,13 +13,13 @@ export class DbCreateUserPassword implements ICreateUserPassword {
   async createPassword(
     data: ICreateUserPasswordDTO
   ): Promise<ICreateUserPasswordResult> {
-    const { code, password } = data
+    const { code, password, email } = data
 
     const findUserByCode = await this.findByActivationCodeRepository.findCode(
       code
     )
 
-    if (!findUserByCode)
+    if (!findUserByCode || findUserByCode.user.email !== email)
       return {
         error: 'Porfavor, verifique se o seu código está correto.',
       }

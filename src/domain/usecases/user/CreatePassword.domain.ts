@@ -6,6 +6,7 @@ export interface ICreateUserPasswordResult {
 export interface ICreateUserPasswordDTO {
   password: string
   code: string
+  email: string
 }
 
 export interface ICreateUserPassword {
