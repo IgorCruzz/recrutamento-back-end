@@ -1,5 +1,6 @@
 import { ICreateUserRepository } from '@/data/protocols/database/user/CreateUser.interface'
 import { IFindUserByEmailRepository } from '@/data/protocols/database/user/FindUserByEmail.interface'
+import { IFindUserByIdRepository } from '@/data/protocols/database/user/FindUserByIdRepository.interface'
 import {
   IUpdateUserPasswordRepository,
   IUpdateUserPasswordRepositoryDTO,
@@ -13,13 +14,20 @@ export class UserRepository
   implements
     ICreateUserRepository,
     IFindUserByEmailRepository,
-    IUpdateUserPasswordRepository {
+    IUpdateUserPasswordRepository,
+    IFindUserByIdRepository {
   async create(email: string): Promise<IUserModel> {
     const orm = getRepository(User)
 
     return await orm.save({
       email,
     })
+  }
+
+  async findId(id: number): Promise<User> {
+    const orm = getRepository(User)
+
+    return await orm.findOne({ id })
   }
 
   async findMail(email: string): Promise<IUserModel> {
