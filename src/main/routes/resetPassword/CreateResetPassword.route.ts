@@ -30,8 +30,8 @@ const createResetPasswordController = (): IController => {
 }
 
 const createResetPassworValidation = (): IMiddleware => {
-  const creaResetPassworValidation = new CreateResetPasswordValidation()
-  return new ValidatorDecorator(creaResetPassworValidation)
+  const createResetPassworValidation = new CreateResetPasswordValidation()
+  return new ValidatorDecorator(createResetPassworValidation)
 }
 
 routes.post(
