@@ -1,3 +1,4 @@
+import { IHasher } from '@/data/protocols/bcryptAdapter/Hasher.interface'
 import { IFindByActivationCodeRepository } from '@/data/protocols/database/activation/findByActivationCode.interface'
 import { IUpdateUserPasswordRepository } from '@/data/protocols/database/user/UpdateUserPassword.interface'
 import {
@@ -9,7 +10,8 @@ import {
 export class DbCreateUserPassword implements ICreateUserPassword {
   constructor(
     private readonly findByActivationCodeRepository: IFindByActivationCodeRepository,
-    private readonly updateUserPasswordRepository: IUpdateUserPasswordRepository
+    private readonly updateUserPasswordRepository: IUpdateUserPasswordRepository,
+    private readonly hasher: IHasher
   ) {}
 
   async createPassword(
@@ -28,7 +30,7 @@ export class DbCreateUserPassword implements ICreateUserPassword {
 
     const updated = await this.updateUserPasswordRepository.updatePassword({
       id: findUserByCode.user_id,
-      password: password,
+      password: await this.hasher.hash(password),
     })
 
     return { updated }

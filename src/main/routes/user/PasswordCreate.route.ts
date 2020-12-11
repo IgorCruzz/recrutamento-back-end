@@ -9,13 +9,15 @@ import { CreatePasswordController } from '../../../presentation/controllers/user
 import { ValidatorDecorator } from '../../../main/decorator/validator.decorator'
 import { ICreateUserPassword } from '../../../domain/usecases/user/CreatePassword.domain'
 import { CreatePasswordValidation } from '../../../infra/yupAdapter/CreatePassword.validator'
+import { BcryptAdapter } from '../../../infra/bcryptAdapter/Bcrypt.adapter'
 
 const routes = Router()
 
 const createUserPasswordUseCase = (): ICreateUserPassword => {
   const userRepository = new UserRepository()
   const activationRepository = new ActivationRepository()
-  return new DbCreateUserPassword(activationRepository, userRepository)
+  const hasher = new BcryptAdapter()
+  return new DbCreateUserPassword(activationRepository, userRepository, hasher)
 }
 
 export const createUserPasswordController = (): IController => {

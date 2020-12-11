@@ -1,7 +1,7 @@
 import { ICompare } from '../protocols/bcryptAdapter/Compare.interface'
 import { IHasher } from '../protocols/bcryptAdapter/Hasher.interface'
 
-export class BcryptAdapterStub implements IHasher {
+export class BcryptHasherStub implements IHasher {
   async hash(value: string): Promise<string> {
     return Promise.resolve('hashed_password')
   }
