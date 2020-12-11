@@ -27,6 +27,15 @@ export class resetpasswords1607703329133 implements MigrationInterface {
         default: 'now()',
       },
     ],
+    foreignKeys: [
+      {
+        columnNames: ['user_id'],
+        referencedColumnNames: ['id'],
+        referencedTableName: 'users',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+      },
+    ],
   })
 
   public async up(queryRunner: QueryRunner): Promise<void> {

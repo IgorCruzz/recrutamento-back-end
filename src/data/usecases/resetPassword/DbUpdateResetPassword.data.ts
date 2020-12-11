@@ -27,8 +27,9 @@ export class DbUpdateResetPassword implements IUpdateResetPassword {
 
     const getToken = await this.findByUserIdRepository.findUserId(user.id)
 
-    if (getToken.reset_token !== token)
+    if (!getToken || getToken.reset_token !== token) {
       return { error: 'Solicitação inválida.' }
+    }
 
     const updated = await this.updateUserPasswordRepository.updatePassword({
       id: getToken.user_id,
