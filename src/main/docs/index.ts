@@ -1,4 +1,5 @@
 import components from './Components'
+import { createResetPassword } from './paths/ResetPassword/CreateResetPassword.path'
 import { signIn } from './paths/Signin/Signin.path'
 import { createPassword } from './paths/User/CreatePassword.path'
 import { createUser } from './paths/User/CreateUser.path'
@@ -27,11 +28,15 @@ export default {
     {
       name: 'Auth',
     },
+    {
+      name: 'Reset Password',
+    },
   ],
   paths: {
     '/user': createUser,
     '/password/{code}': createPassword,
     '/signin': signIn,
+    '/resetPassword': createResetPassword,
   },
   components,
   schemas,

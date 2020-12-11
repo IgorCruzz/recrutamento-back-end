@@ -1,4 +1,5 @@
 import { errorSchema } from './schemas/error/Error-schema'
+import { CreateResetPasswordParamSchema } from './schemas/params/resetPassword/CreateResetPasswordParam.schema'
 import { SigninParamSchema } from './schemas/params/signin/SigninParam.schema'
 import { createPasswordParamSchema } from './schemas/params/user/CreatePasswordParam.schema'
 import { createUserParamSchema } from './schemas/params/user/CreateUserParam.schema'
@@ -14,4 +15,6 @@ export default {
   createPasswordResult: PasswordUserResultSchema,
   signInParams: SigninParamSchema,
   signInResult: signInResultSchema,
+  createResetPasswordParams: CreateResetPasswordParamSchema,
+  createResetPasswordResult: CreateResetPasswordParamSchema,
 }
