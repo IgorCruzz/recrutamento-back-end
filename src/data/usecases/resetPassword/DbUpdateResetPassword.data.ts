@@ -1,5 +1,7 @@
+import { IHasher } from '@/data/protocols/bcryptAdapter/Hasher.interface'
 import { IFindByUserIdRepository } from '@/data/protocols/database/resetPassword/FindByUserId.interface'
 import { IFindUserByEmailRepository } from '@/data/protocols/database/user/FindUserByEmail.interface'
+import { IUpdateUserPasswordRepository } from '@/data/protocols/database/user/UpdateUserPassword.interface'
 import {
   IUpdateResetPassword,
   IUpdateResetPasswordDTO,
@@ -9,20 +11,30 @@ import {
 export class DbUpdateResetPassword implements IUpdateResetPassword {
   constructor(
     private readonly findUserByEmailRepository: IFindUserByEmailRepository,
-    private readonly findByUserIdRepository: IFindByUserIdRepository
+    private readonly findByUserIdRepository: IFindByUserIdRepository,
+    private readonly updateUserPasswordRepository: IUpdateUserPasswordRepository,
+    private readonly hasher: IHasher
   ) {}
 
   async updateResetPassword(
     data: IUpdateResetPasswordDTO
   ): Promise<IUpdateResetPasswordResult> {
-    const { email } = data
+    const { email, token, password } = data
 
-    const findUser = await this.findUserByEmailRepository.findMail(email)
+    const user = await this.findUserByEmailRepository.findMail(email)
 
-    if (!findUser) return { error: 'Não existe um usuário com este e-mail.' }
+    if (!user) return { error: 'Não existe um usuário com este e-mail.' }
 
-    await this.findByUserIdRepository.findUserId(findUser.id)
+    const getToken = await this.findByUserIdRepository.findUserId(user.id)
 
-    return await null
+    if (getToken.reset_token !== token)
+      return { error: 'Solicitação inválida.' }
+
+    const updated = await this.updateUserPasswordRepository.updatePassword({
+      id: getToken.user_id,
+      password: await this.hasher.hash(password),
+    })
+
+    return { updated }
   }
 }
