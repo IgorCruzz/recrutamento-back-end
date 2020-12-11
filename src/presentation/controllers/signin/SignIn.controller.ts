@@ -1,3 +1,5 @@
+import { ISignIn } from '@/domain/usecases/signin/signin.domain'
+import { created } from '@/presentation/http/http-helper'
 import {
   IController,
   IHttpRequest,
@@ -5,9 +7,15 @@ import {
 } from '@/presentation/protocols'
 
 export class SignInController implements IController {
-  constructor() {}
+  constructor(private readonly dbSignIn: ISignIn) {}
 
   async handle(httpRequest: IHttpRequest): Promise<IHttpResponse> {
-    return await null
+    const { email, password } = httpRequest.body
+
+    const session = await this.dbSignIn.signIn({
+      email,
+      password,
+    })
+    return created(session)
   }
 }
