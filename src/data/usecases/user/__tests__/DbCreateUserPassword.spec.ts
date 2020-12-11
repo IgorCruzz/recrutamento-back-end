@@ -1,5 +1,7 @@
 import { FindByActivationCodeRepositoryStub } from '@/data/mocks/activationRepo.mock'
+import { BcryptHasherStub } from '@/data/mocks/Bcrypt.mock'
 import { UpdateUserPasswordRepositoryStub } from '@/data/mocks/userRepo.mock'
+import { IHasher } from '@/data/protocols/bcryptAdapter/Hasher.interface'
 import { IFindByActivationCodeRepository } from '@/data/protocols/database/activation/findByActivationCode.interface'
 import { IUpdateUserPasswordRepository } from '@/data/protocols/database/user/UpdateUserPassword.interface'
 import { ICreateUserPassword } from '@/domain/usecases/user/CreatePassword.domain'
@@ -8,14 +10,17 @@ import { DbCreateUserPassword } from '../DbCreateUserPassword.data'
 let dbCreateUserPassword: ICreateUserPassword
 let findByActivationCodeRepository: IFindByActivationCodeRepository
 let updateUserPasswordRepository: IUpdateUserPasswordRepository
+let hasher: IHasher
 
 describe('DbCreateUserPassword  ( DATA )', () => {
   beforeEach(() => {
     updateUserPasswordRepository = new UpdateUserPasswordRepositoryStub()
     findByActivationCodeRepository = new FindByActivationCodeRepositoryStub()
+    hasher = new BcryptHasherStub()
     dbCreateUserPassword = new DbCreateUserPassword(
       findByActivationCodeRepository,
-      updateUserPasswordRepository
+      updateUserPasswordRepository,
+      hasher
     )
   })
 
@@ -77,6 +82,18 @@ describe('DbCreateUserPassword  ( DATA )', () => {
     })
   })
 
+  it('should call hasher with success', async () => {
+    const res = jest.spyOn(hasher, 'hash')
+
+    await dbCreateUserPassword.createPassword({
+      code: 'code_generated',
+      password: 'password',
+      email: 'user@mail.com',
+    })
+
+    expect(res).toHaveBeenCalledWith('password')
+  })
+
   it('should call updateUserPasswordRepository with success', async () => {
     const res = jest.spyOn(updateUserPasswordRepository, 'updatePassword')
 
@@ -88,7 +105,7 @@ describe('DbCreateUserPassword  ( DATA )', () => {
 
     expect(res).toHaveBeenCalledWith({
       id: 1,
-      password: 'password',
+      password: 'hashed_password',
     })
   })
 })
