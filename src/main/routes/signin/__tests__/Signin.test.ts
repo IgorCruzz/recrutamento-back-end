@@ -36,13 +36,33 @@ describe('User', () => {
         password_hash: passwordHashed,
       })
 
-      const res = await request(app)
+      await request(app)
         .post('/api/signin')
         .send({
           email: 'user@mail.com',
           password: 'password',
         })
         .expect(201)
+    })
+
+    it('/POST -> return 400 if password  has been incorrect', async () => {
+      const passwordHashed = await hash('password', 12)
+
+      const user = await getRepository(User).save({
+        email: 'user@mail.com',
+      })
+
+      await getRepository(User).update(user.id, {
+        password_hash: passwordHashed,
+      })
+
+      await request(app)
+        .post('/api/signin')
+        .send({
+          email: 'user@mail.com',
+          password: 'wrong_password',
+        })
+        .expect(400)
     })
   })
 })
