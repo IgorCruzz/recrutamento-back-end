@@ -31,6 +31,8 @@ export class DbSignIn implements ISignIn {
       findUser.password_hash
     )
 
+    if (!checkPassword) return { error: 'Senha incorreta, tente novamente.' }
+
     return await null
   }
 }
