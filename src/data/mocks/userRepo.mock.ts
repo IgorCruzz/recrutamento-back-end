@@ -1,6 +1,7 @@
 import { IUserModel } from '@/domain/models/User.model'
 import { ICreateUserRepository } from '../protocols/database/user/CreateUser.interface'
 import { IFindUserByEmailRepository } from '../protocols/database/user/FindUserByEmail.interface'
+import { IFindUserByIdRepository } from '../protocols/database/user/FindUserByIdRepository.interface'
 import {
   IUpdateUserPasswordRepository,
   IUpdateUserPasswordRepositoryDTO,
@@ -21,6 +22,18 @@ export class CreateUserRepositoryStub implements ICreateUserRepository {
 export class FindUserByEmailRepositoryStub
   implements IFindUserByEmailRepository {
   async findMail(email: string): Promise<IUserModel> {
+    return Promise.resolve({
+      id: 1,
+      email: 'user@mail.com',
+      password_hash: null,
+      created_at: new Date(),
+      updated_at: new Date(),
+    })
+  }
+}
+
+export class FindUserByIdRepositoryStub implements IFindUserByIdRepository {
+  async findId(id: number): Promise<IUserModel> {
     return Promise.resolve({
       id: 1,
       email: 'user@mail.com',
