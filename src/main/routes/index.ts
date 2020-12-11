@@ -2,8 +2,9 @@ import { Router } from 'express'
 
 import createUser from './user/userCreate.route'
 import createPassword from './user/PasswordCreate.route'
+import signIn from './signin/Signin.route'
 
-const routes = [createUser, createPassword]
+const routes = [createUser, createPassword, signIn]
 
 const router = Router()
 

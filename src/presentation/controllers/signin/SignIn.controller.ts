@@ -3,7 +3,7 @@ import {
   badRequest,
   created,
   serverError,
-} from '@/presentation/http/http-helper'
+} from '../../../presentation/http/http-helper'
 import {
   IController,
   IHttpRequest,
