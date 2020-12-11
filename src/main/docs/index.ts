@@ -1,4 +1,5 @@
 import components from './Components'
+import { signIn } from './paths/Signin/Signin.path'
 import { createPassword } from './paths/User/CreatePassword.path'
 import { createUser } from './paths/User/CreateUser.path'
 import schemas from './Schemas'
@@ -23,10 +24,14 @@ export default {
     {
       name: 'User',
     },
+    {
+      name: 'Auth',
+    },
   ],
   paths: {
     '/user': createUser,
     '/password/{code}': createPassword,
+    '/signin': signIn,
   },
   components,
   schemas,
