@@ -34,7 +34,7 @@ describe('createUser  ( Controller )', () => {
     expect(res).toEqual(ok({ message: 'Senha criada com sucesso.' }))
   })
 
-  it('should return 400 if createUser return an error message', async () => {
+  it('should return 400 if createUserPassword return an error message', async () => {
     const req: IHttpRequest = {
       params: {
         code: 'code_generated',
@@ -57,7 +57,7 @@ describe('createUser  ( Controller )', () => {
     )
   })
 
-  it('should return 500 if createUser throws', async () => {
+  it('should return 500 if createUserPassword throws', async () => {
     const req: IHttpRequest = {
       params: {
         code: 'code_generated',
