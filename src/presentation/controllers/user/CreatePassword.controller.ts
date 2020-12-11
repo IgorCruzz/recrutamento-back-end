@@ -1,5 +1,9 @@
 import { ICreateUserPassword } from '@/domain/usecases/user/CreatePassword.domain'
-import { badRequest, ok, serverError } from '@/presentation/http/http-helper'
+import {
+  badRequest,
+  ok,
+  serverError,
+} from '../../../presentation/http/http-helper'
 import {
   IController,
   IHttpRequest,
