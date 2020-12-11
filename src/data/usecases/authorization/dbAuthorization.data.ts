@@ -1,6 +1,5 @@
 import {
   IAuthorization,
-  IAuthorizationDTO,
   IAuthorizationResult,
 } from '@/domain/usecases/authorization/authorization.interface'
 import { IVerify } from '@/data/protocols/jwtAdapter/verifyJwt.interface'
@@ -12,8 +11,8 @@ export class DbAuthorization implements IAuthorization {
     private readonly findUserByIdRepository: IFindUserByIdRepository
   ) {}
 
-  async auth(data: IAuthorizationDTO): Promise<IAuthorizationResult> {
-    const decoded = await this.Verify.verify(data.token)
+  async auth(token: string): Promise<IAuthorizationResult> {
+    const decoded = await this.Verify.verify(token)
 
     if (!decoded) return { error: 'Token inválido.' }
 

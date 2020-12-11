@@ -26,13 +26,13 @@ describe('Authorization Data', () => {
   it('should be able to call VerifyRepository with success', async () => {
     const res = jest.spyOn(verifyRepository, 'verify')
 
-    await authorizationData.auth({ token: 'token' })
+    await authorizationData.auth('token')
 
     expect(res).toHaveBeenCalledWith('token')
   })
 
   it('should be able to return an user id', async () => {
-    const res = await authorizationData.auth({ token: 'token' })
+    const res = await authorizationData.auth('token')
 
     expect(res).toEqual({
       id: 1,
@@ -42,7 +42,7 @@ describe('Authorization Data', () => {
   it('should be returns an error message if VerifyRepository returns false', async () => {
     jest.spyOn(verifyRepository, 'verify').mockReturnValue(false)
 
-    const res = await authorizationData.auth({ token: 'token' })
+    const res = await authorizationData.auth('token')
 
     expect(res).toEqual({
       error: 'Token inválido.',
@@ -52,7 +52,7 @@ describe('Authorization Data', () => {
   it('should be able to call userFindIdRepository with success', async () => {
     const res = jest.spyOn(userFindIdRepository, 'findId')
 
-    await authorizationData.auth({ token: 'token' })
+    await authorizationData.auth('token')
 
     expect(res).toHaveBeenCalledWith(1)
   })
@@ -60,7 +60,7 @@ describe('Authorization Data', () => {
   it('should return an error message if userFindIdRepository returns undefined', async () => {
     jest.spyOn(userFindIdRepository, 'findId').mockResolvedValue(undefined)
 
-    const res = await authorizationData.auth({ token: 'token' })
+    const res = await authorizationData.auth('token')
 
     expect(res).toEqual({
       error: 'Este token não pertence a nenhum usuário.',
