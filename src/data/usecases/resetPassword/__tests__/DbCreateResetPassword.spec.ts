@@ -46,7 +46,7 @@ describe('CreateResetPassword ( DATA )', () => {
     expect(res).toEqual({ error: 'Não existe um usuário com este e-mail.' })
   })
 
-  test('should throw if findUserByEmailRepository throws', async () => {
+  it('should throw if findUserByEmailRepository throws', async () => {
     jest
       .spyOn(findUserByEmailRepository, 'findMail')
       .mockImplementationOnce(() => {
@@ -65,7 +65,7 @@ describe('CreateResetPassword ( DATA )', () => {
     expect(res).toHaveBeenCalledWith(1)
   })
 
-  test('should throw if createResetPasswordRepository throws', async () => {
+  it('should throw if createResetPasswordRepository throws', async () => {
     jest
       .spyOn(createResetPasswordRepository, 'createResetPassword')
       .mockImplementationOnce(() => {
@@ -82,5 +82,23 @@ describe('CreateResetPassword ( DATA )', () => {
     await dbCreateResetPassword.createResetPassword('user@mail.com')
 
     expect(res).toHaveBeenCalledWith({ email: 'user@mail.com', token: 'token' })
+  })
+
+  it('should throw if resetPassword throws', async () => {
+    jest.spyOn(resetPassword, 'resetPassword').mockImplementationOnce(() => {
+      throw new Error()
+    })
+
+    const promise = dbCreateResetPassword.createResetPassword('user@mail.com')
+    await expect(promise).rejects.toThrow()
+  })
+
+  it('should return a token to reset the password', async () => {
+    const res = await dbCreateResetPassword.createResetPassword('user@mail.com')
+
+    expect(res).toEqual({
+      id: 1,
+      resetToken: 'token',
+    })
   })
 })
