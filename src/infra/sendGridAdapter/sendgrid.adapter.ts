@@ -4,8 +4,33 @@ import {
   IActivationUser,
   IActivationUserDTO,
 } from '@/data/protocols/sendGridAdapter/ActivationMail.interface'
+import {
+  IResetPassword,
+  IResetPasswordDTO,
+} from '@/data/protocols/sendGridAdapter/ResetPasswordMail.interface'
 
-export class SendGridAdapter implements IActivationUser {
+export class SendGridAdapter implements IActivationUser, IResetPassword {
+  async resetPassword(data: IResetPasswordDTO): Promise<void> {
+    const { email, token } = data
+
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+
+    const msg = {
+      to: email,
+      from: process.env.HOST_EMAIL,
+      subject: 'Quase lá...',
+      html: `<p>Olá</strong></p> <br />
+      <p>Entre nesse link para alterar sua senha.<br />
+      <a href=${process.env.URL}/changePassword/${token}>**Clique aqui para redefinir sua senha**</a>
+      </p>`,
+    }
+
+    await sgMail
+      .send(msg)
+      .then(() => console.log('E-mail enviado.'))
+      .catch((err) => console.log(err))
+  }
+
   async activationUser(data: IActivationUserDTO): Promise<void> {
     const { email, code } = data
 
