@@ -1,5 +1,6 @@
 import components from './Components'
 import { createResetPassword } from './paths/ResetPassword/CreateResetPassword.path'
+import { updateResetPassword } from './paths/ResetPassword/UpdateResetPassword.path'
 import { signIn } from './paths/Signin/Signin.path'
 import { createPassword } from './paths/User/CreatePassword.path'
 import { createUser } from './paths/User/CreateUser.path'
@@ -37,7 +38,7 @@ export default {
     '/password/{code}': createPassword,
     '/signin': signIn,
     '/resetPassword': createResetPassword,
-    '/resetPassword/{token}': createResetPassword,
+    '/resetPassword/{token}': updateResetPassword,
   },
   components,
   schemas,

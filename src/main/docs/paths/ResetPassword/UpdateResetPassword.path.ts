@@ -1,5 +1,5 @@
 export const updateResetPassword = {
-  post: {
+  put: {
     tags: ['Reset Password'],
     summary: 'API para criar redefinir a senha',
     requestBody: {
