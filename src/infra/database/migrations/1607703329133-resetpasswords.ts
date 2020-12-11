@@ -12,8 +12,9 @@ export class resetpasswords1607703329133 implements MigrationInterface {
       },
       {
         name: 'reset_token',
-        type: 'varchar',
-        isNullable: true,
+        type: 'uuid',
+        generationStrategy: 'uuid',
+        default: 'uuid_generate_v4()',
       },
       {
         name: 'created_at',
