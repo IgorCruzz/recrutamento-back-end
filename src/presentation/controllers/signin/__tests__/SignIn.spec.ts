@@ -1,5 +1,9 @@
 import { ISignIn } from '@/domain/usecases/signin/signin.domain'
-import { badRequest, created } from '../../../../presentation/http/http-helper'
+import {
+  badRequest,
+  created,
+  serverError,
+} from '../../../../presentation/http/http-helper'
 import { DbSignInStub } from '@/presentation/mocks/SignIn.mock'
 import { IController, IHttpRequest } from '@/presentation/protocols'
 import { SignInController } from '../SignIn.controller'
@@ -47,5 +51,22 @@ describe('SignIn ( Controller )', () => {
     const res = await signInController.handle(req)
 
     expect(res).toEqual(badRequest('Não existe um usuário com este e-mail.'))
+  })
+
+  it('should return 500 if dbSignIn throws', async () => {
+    const req: IHttpRequest = {
+      body: {
+        email: 'user@mail.com',
+        password: 'password',
+      },
+    }
+
+    jest.spyOn(dbSignIn, 'signIn').mockImplementation(() => {
+      throw new Error()
+    })
+
+    const res = await signInController.handle(req)
+
+    expect(res).toEqual(serverError(new Error()))
   })
 })
