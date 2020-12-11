@@ -9,3 +9,4 @@ Exceções
 
 1.  ✅ Retorna 400 se não existir um usuário com o e-mail fornecido.
 1.  ✅ Retorna 500 se der erro ao tentar criar o token.
+1.  ✅ Retorna 500 se der erro ao tentar criar o token.
