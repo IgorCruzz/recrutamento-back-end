@@ -11,7 +11,8 @@ export class CreatePasswordController implements IController {
 
   async handle(httpRequest: IHttpRequest): Promise<IHttpResponse> {
     try {
-      const { code, email, password } = httpRequest.params
+      const { code } = httpRequest.params
+      const { email, password } = httpRequest.body
 
       const user = await this.createUserPassword.createPassword({
         code,
