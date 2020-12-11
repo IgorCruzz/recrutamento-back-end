@@ -76,4 +76,23 @@ describe('DbSignin ( DATA )', () => {
 
     expect(res).toHaveBeenCalledWith('password', 'password')
   })
+
+  it('should return an error messga if bcryptCompare returns false', async () => {
+    jest.spyOn(findUserByEmailRepository, 'findMail').mockResolvedValue({
+      id: 1,
+      email: 'user@mail.com',
+      password_hash: 'different_password',
+      created_at: new Date(),
+      updated_at: new Date(),
+    })
+
+    jest.spyOn(bcryptCompare, 'compare').mockResolvedValue(false)
+
+    const res = await dbSignIn.signIn({
+      email: 'user@mail.com',
+      password: 'password',
+    })
+
+    expect(res).toEqual({ error: 'Senha incorreta, tente novamente.' })
+  })
 })
