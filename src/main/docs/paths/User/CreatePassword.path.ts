@@ -1,5 +1,5 @@
 export const createPassword = {
-  post: {
+  put: {
     tags: ['User'],
     summary: 'API para criar uma senha para o usuário poder logar no sistema.',
     requestBody: {
