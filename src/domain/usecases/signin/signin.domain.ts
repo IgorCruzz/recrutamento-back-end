@@ -1,7 +1,7 @@
 export interface ISignInDTOResult {
   error?: string
   id?: number
-  email?: number
+  email?: string
   token?: string
 }
 

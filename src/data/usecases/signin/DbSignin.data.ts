@@ -1,5 +1,6 @@
 import { ICompare } from '@/data/protocols/bcryptAdapter/Compare.interface'
 import { IFindUserByEmailRepository } from '@/data/protocols/database/user/FindUserByEmail.interface'
+import { ISign } from '@/data/protocols/jwtAdapter/signJwt.interface'
 import {
   ISignIn,
   ISignInDTO,
@@ -9,7 +10,8 @@ import {
 export class DbSignIn implements ISignIn {
   constructor(
     private readonly findUserByEmailRepository: IFindUserByEmailRepository,
-    private readonly bcryptCompare: ICompare
+    private readonly bcryptCompare: ICompare,
+    private readonly jwtSign: ISign
   ) {}
 
   async signIn(data: ISignInDTO): Promise<ISignInDTOResult> {
@@ -33,6 +35,12 @@ export class DbSignIn implements ISignIn {
 
     if (!checkPassword) return { error: 'Senha incorreta, tente novamente.' }
 
-    return await null
+    const encrypt = this.jwtSign.sign(findUser.id)
+
+    return {
+      id: findUser.id,
+      email: findUser.email,
+      token: encrypt,
+    }
   }
 }
