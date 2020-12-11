@@ -1,7 +1,7 @@
 import { IResetPasswordModel } from '@/domain/models/ResetPassword.model'
 import { ICreateResetPasswordRepository } from '../protocols/database/resetPassword/CreateUser.interface'
 
-export class CreateResetPasswordRepository
+export class CreateResetPasswordRepositoryStub
   implements ICreateResetPasswordRepository {
   async createResetPassword(id: number): Promise<IResetPasswordModel> {
     return Promise.resolve({
