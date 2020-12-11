@@ -3,7 +3,7 @@ import { UserRepository } from '../../infra/database/repositories/User.repositor
 import { JwtAdapter } from '../../infra/jwtAdapter/jwt.adapter'
 import { AuthMiddleware } from '../../presentation/middlewares/auth.middleware'
 
-export const makeAuthMiddleware = (): any => {
+export const authMiddleware = (): any => {
   const jwtAdapter = new JwtAdapter()
   const userRepository = new UserRepository()
   const dbAuth = new DbAuthorization(jwtAdapter, userRepository)

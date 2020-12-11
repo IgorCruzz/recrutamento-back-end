@@ -65,4 +65,13 @@ describe('User', () => {
 
     expect(res).toBeTruthy()
   })
+
+  it('should be able to find user from id', async () => {
+    const user = await getRepository(User).save({ email: 'user@mail.com' })
+
+    const res = await userRepository.findId(user.id)
+
+    expect(res).toBeTruthy()
+    expect(res.id).toBeTruthy()
+  })
 })
