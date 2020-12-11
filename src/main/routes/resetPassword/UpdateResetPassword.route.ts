@@ -35,7 +35,7 @@ const updateResetPassworValidation = (): IMiddleware => {
   return new ValidatorDecorator(updateResetPassworValidation)
 }
 
-routes.post(
+routes.put(
   '/resetPassword/:token',
   adapMiddleware(updateResetPassworValidation()),
   adapRoute(updateResetPasswordController())

@@ -1,11 +1,13 @@
 import { errorSchema } from './schemas/error/Error-schema'
 import { CreateResetPasswordParamSchema } from './schemas/params/resetPassword/CreateResetPasswordParam.schema'
+import { UpdateResetPasswordParamSchema } from './schemas/params/resetPassword/UpdateResetPasswordParam.schema'
 import { SigninParamSchema } from './schemas/params/signin/SigninParam.schema'
 import { createPasswordParamSchema } from './schemas/params/user/CreatePasswordParam.schema'
 import { createUserParamSchema } from './schemas/params/user/CreateUserParam.schema'
 import { createUserResultSchema } from './schemas/results/auth/CreateUser.schema'
 import { PasswordUserResultSchema } from './schemas/results/auth/PasswordUser.schema'
 import { signInResultSchema } from './schemas/results/auth/Signin.schema'
+import { updateResetPasswordResultSchema } from './schemas/results/resetPassword/UpdateResetPassword.schema'
 
 export default {
   error: errorSchema,
@@ -17,4 +19,6 @@ export default {
   signInResult: signInResultSchema,
   createResetPasswordParams: CreateResetPasswordParamSchema,
   createResetPasswordResult: CreateResetPasswordParamSchema,
+  updateResetPasswordParams: UpdateResetPasswordParamSchema,
+  updateResetPasswordResult: updateResetPasswordResultSchema,
 }

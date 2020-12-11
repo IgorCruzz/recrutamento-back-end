@@ -37,6 +37,7 @@ export default {
     '/password/{code}': createPassword,
     '/signin': signIn,
     '/resetPassword': createResetPassword,
+    '/resetPassword/{token}': createResetPassword,
   },
   components,
   schemas,
