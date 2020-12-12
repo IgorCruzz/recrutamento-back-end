@@ -6,10 +6,8 @@
   "author": "Igor Cruz",
   "license": "ISC",
   "scripts": {
-    "prebuild": "rimraf dist",
-    "build": "tsc -p tsconfig.build.json",
-    "prestart": "rimraf dist && ts-node -p tsconfig.build.json",
-    "start": "ts-node dist/main/Server.js",
+    "build": "rimraf dist && tsc -p tsconfig-build.json",
+    "start": "node dist/main/Server.js",
     "start:dev": "ts-node-dev --respawn --transpile-only src/main/Server.ts",
     "lint": "eslint 'src/**' --fix",
     "format": "prettier --write \"src/**/*.ts\"",
