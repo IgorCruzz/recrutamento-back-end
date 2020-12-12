@@ -1,5 +1,7 @@
 require('dotenv').config
 
+const source= process.env.NODE_ENV === 'production' ? 'dist' : 'src'
+
 const postgres = {
   type: 'postgres',
   host: 'localhost',
@@ -7,10 +9,10 @@ const postgres = {
   username: 'postgres',
   password: 'docker',
   database: 'postgres',
-  entities: ['src/infra/database/entities/*.entity.ts'],
-  migrations: ['src/infra/database/migrations/*.ts'],
+  entities: [`${source}/infra/database/entities/*.entity{.ts,.js}`],
+  migrations: [`${source}/infra/database/migrations/*{.ts,.js}`],
   cli: {
-    migrationsDir: 'src/infra/database/migrations'
+    migrationsDir: `${source}/infra/database/migrations`
   }
 }
 

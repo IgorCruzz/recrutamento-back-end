@@ -9,7 +9,7 @@
     "prebuild": "rimraf dist",
     "build": "tsc -p tsconfig.build.json",
     "prestart": "rimraf dist && tsc -p tsconfig.build.json",
-    "start": "node dist/main/Server.js",
+    "start": "NODE_ENV=production ts-node dist/main/Server.js",
     "start:dev": "ts-node-dev --respawn --transpile-only src/main/Server.ts",
     "lint": "eslint 'src/**' --fix",
     "format": "prettier --write \"src/**/*.ts\"",
