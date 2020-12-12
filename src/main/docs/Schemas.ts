@@ -5,6 +5,7 @@ import { SigninParamSchema } from './schemas/params/signin/SigninParam.schema'
 import { createPasswordParamSchema } from './schemas/params/user/CreatePasswordParam.schema'
 import { createUserParamSchema } from './schemas/params/user/CreateUserParam.schema'
 import { signInResultSchema } from './schemas/results/auth/Signin.schema'
+import { createResetPasswordResultSchema } from './schemas/results/resetPassword/CreateResetPassword.schema'
 import { updateResetPasswordResultSchema } from './schemas/results/resetPassword/UpdateResetPassword.schema'
 import { createUserResultSchema } from './schemas/results/User/CreateUser.schema'
 import { PasswordUserResultSchema } from './schemas/results/User/PasswordUser.schema'
@@ -18,7 +19,7 @@ export default {
   signInParams: SigninParamSchema,
   signInResult: signInResultSchema,
   createResetPasswordParams: CreateResetPasswordParamSchema,
-  createResetPasswordResult: CreateResetPasswordParamSchema,
+  createResetPasswordResult: createResetPasswordResultSchema,
   updateResetPasswordParams: UpdateResetPasswordParamSchema,
   updateResetPasswordResult: updateResetPasswordResultSchema,
 }
