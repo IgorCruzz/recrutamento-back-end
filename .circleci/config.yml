@@ -13,9 +13,14 @@ jobs:
           command: |
             yarn
             yarn test:ci
+  orbs:
+    heroku: circleci/heroku@0.0.10
 workflows:
   version: 2
   Example_Workflow:
     jobs:
      - start
+  heroku_deploy:
+    jobs:
+      - heroku/deploy-via-git
 

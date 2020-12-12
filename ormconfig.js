@@ -4,11 +4,11 @@ const source= process.env.NODE_ENV === 'production' ? 'dist' : 'src'
 
 const postgres = {
   type: 'postgres',
-  host: 'localhost',
+  host: process.env.DATABASE_HOST,
   port: 5432,
-  username: 'postgres',
-  password: 'docker',
-  database: 'postgres',
+  username: process.env.DATABASE_USERNAME,
+  password: process.env.DATABASE_PASSWORD,
+  database: process.env.DATABASE_NAME,
   entities: [`${source}/infra/database/entities/*.entity{.ts,.js}`],
   migrations: [`${source}/infra/database/migrations/*{.ts,.js}`],
   cli: {
