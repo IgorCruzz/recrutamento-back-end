@@ -1,5 +1,5 @@
 {
-  "name": "companyhub",
+  "name": "nuvemweb",
   "version": "2.9.0",
   "description": "",
   "main": "index.js",
@@ -7,7 +7,7 @@
   "license": "ISC",
   "scripts": {
     "build": "rimraf dist && tsc -p tsconfig.build.json",
-    "prestart": "npm run migration:run",
+    "prestart": "npm run typeorm migration:run",
     "start": "node dist/main/Server.js",
     "start:dev": "ts-node-dev --respawn --transpile-only src/main/Server.ts",
     "lint": "eslint 'src/**' --fix",

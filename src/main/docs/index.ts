@@ -9,7 +9,7 @@ import schemas from './Schemas'
 export default {
   openapi: '3.0.0',
   info: {
-    title: 'companyHUB',
+    title: 'nuvemWEB',
     description: '',
     version: '1.0.0',
   },
