@@ -6,7 +6,7 @@ import {
 } from '../../../../presentation/http/http-helper'
 import { DbCreateResetPasswordStub } from '@/presentation/mocks/ResetPassword.mock'
 import { IController, IHttpRequest } from '@/presentation/protocols'
-import { ResetPasswordController } from '../ResetPassword.controller'
+import { ResetPasswordController } from '../CreateResetPassword.controller'
 
 let resetPasswordController: IController
 let dbCreateResetPassword: ICreateResetPassword
@@ -30,7 +30,7 @@ describe('CreateResetPassword ( Controller )', () => {
 
     const res = await resetPasswordController.handle(req)
 
-    expect(res).toEqual(created({ id: 1, resetToken: 'token' }))
+    expect(res).toEqual(created({ resetToken: 'token' }))
   })
 
   it('should return 400 if dbCreateResetPassword return an error message', async () => {

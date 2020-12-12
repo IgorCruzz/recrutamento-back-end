@@ -5,7 +5,7 @@ import { ICreateResetPassword } from '../../../domain/usecases/resetPassword/Cre
 import { UserRepository } from '../../../infra/database/repositories/User.repository'
 import { DbCreateResetPassword } from '../../../data/usecases/resetPassword/DbCreateResetPassword.data'
 import { IController, IMiddleware } from '../../../presentation/protocols'
-import { ResetPasswordController } from '../../../presentation/controllers/resetPassword/ResetPassword.controller'
+import { ResetPasswordController } from '../../../presentation/controllers/resetPassword/CreateResetPassword.controller'
 import { ValidatorDecorator } from '../../../main/decorator/Validator.decorator'
 import { ResetPasswordRepository } from '../../../infra/database/repositories/ResetPassword.repository'
 import { SendGridAdapter } from '../../../infra/sendGridAdapter/Sendgrid.adapter'

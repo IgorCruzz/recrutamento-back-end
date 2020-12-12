@@ -97,7 +97,6 @@ describe('CreateResetPassword ( DATA )', () => {
     const res = await dbCreateResetPassword.createResetPassword('user@mail.com')
 
     expect(res).toEqual({
-      id: 1,
       resetToken: 'token',
     })
   })

@@ -1,6 +1,5 @@
 export interface ICreateResetPasswordResult {
   error?: string
-  id?: number
   resetToken?: string
 }
 

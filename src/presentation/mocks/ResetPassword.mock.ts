@@ -13,7 +13,6 @@ export class DbCreateResetPasswordStub implements ICreateResetPassword {
     email: string
   ): Promise<ICreateResetPasswordResult> {
     return Promise.resolve({
-      id: 1,
       resetToken: 'token',
     })
   }

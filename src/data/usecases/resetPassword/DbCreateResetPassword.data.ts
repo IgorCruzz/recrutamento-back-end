@@ -30,7 +30,6 @@ export class DbCreateResetPassword implements ICreateResetPassword {
     })
 
     return {
-      id: 1,
       resetToken: reset.reset_token,
     }
   }
