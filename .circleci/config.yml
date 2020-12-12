@@ -1,26 +1,7 @@
 version: 2.1
-jobs:
-  start:
-    docker:
-      - image: circleci/node:10-browsers
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD
-    steps:
-      - checkout
-      - run:
-          name: Test
-          command: |
-            yarn
-            yarn test:ci
-  orbs:
-    heroku: circleci/heroku@0.0.10
+orbs:
+  heroku: circleci/heroku@0.0.10
 workflows:
-  version: 2
-  Example_Workflow:
-    jobs:
-     - start
   heroku_deploy:
     jobs:
       - heroku/deploy-via-git
-
