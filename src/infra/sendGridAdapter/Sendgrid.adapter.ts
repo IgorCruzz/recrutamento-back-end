@@ -19,10 +19,8 @@ export class SendGridAdapter implements IActivationUser, IResetPassword {
       to: email,
       from: process.env.HOST_EMAIL,
       subject: 'Quase lá...',
-      html: `<p>Olá</strong></p> <br />
-      <p>Entre nesse link para alterar sua senha.<br />
-      <a href=${process.env.URL}/changePassword/${token}>**Clique aqui para redefinir sua senha**</a>
-      </p>`,
+      html: `<p>Olá, entre nesse link para alterar sua senha.</p>
+      <a href=${process.env.URL}/updatePassword/${token}>**Clique aqui para redefinir sua senha**</a>`,
     }
 
     await sgMail
@@ -40,19 +38,9 @@ export class SendGridAdapter implements IActivationUser, IResetPassword {
       to: email,
       from: process.env.HOST_EMAIL,
       subject: 'Quase lá...',
-      html: `<p>Olá</strong></p> <br />
-             <p>Obrigado por fazer o cadastro na nossa plataforma.<br />
-             <button
-             type="button"
-             style="
-             margin:5px 0;
-             background:SlateBlue;
-             color:white;
-             font-weight:bold;
-             border:0;
-             padding:10px;">
-             <a href=${process.env.URL}/auth/${code}>**Clique aqui para criar uma senha**</a>
-             </button></p>`,
+      html: `
+      <p>Olá, obrigado por fazer o cadastro na nossa plataforma.<br /></p>
+      <a href=${process.env.URL}/createPassword/${code}>Clique aqui para criar uma senha</a>`,
     }
 
     await sgMail
