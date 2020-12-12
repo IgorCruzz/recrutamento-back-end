@@ -1,12 +1,12 @@
-import { CreateActivationStub } from '@/data/mocks/activationRepo.mock'
-import { GenerateCodeStub } from '@/data/mocks/crypto.mock'
-import { SendGridAdapterStub } from '@/data/mocks/sendgrid.mock'
+import { CreateActivationStub } from '@/data/mocks/ActivationRepo.mock'
+import { GenerateCodeStub } from '@/data/mocks/Crypto.mock'
+import { SendGridAdapterStub } from '@/data/mocks/Sendgrid.mock'
 import {
   CreateUserRepositoryStub,
   FindUserByEmailRepositoryStub,
-} from '@/data/mocks/userRepo.mock'
+} from '@/data/mocks/UserRepo.mock'
 import { IGenerateCode } from '@/data/protocols/cryptoAdapter/GenerateCode.interface'
-import { ICreateActivationRepository } from '@/data/protocols/database/activation/createActivation.interface'
+import { ICreateActivationRepository } from '@/data/protocols/database/activation/CreateActivation.interface'
 import { ICreateUserRepository } from '@/data/protocols/database/user/CreateUser.interface'
 import { IFindUserByEmailRepository } from '@/data/protocols/database/user/FindUserByEmail.interface'
 import { IActivationUser } from '@/data/protocols/sendGridAdapter/ActivationMail.interface'

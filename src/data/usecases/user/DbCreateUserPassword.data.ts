@@ -1,5 +1,5 @@
 import { IHasher } from '@/data/protocols/bcryptAdapter/Hasher.interface'
-import { IFindByActivationCodeRepository } from '@/data/protocols/database/activation/findByActivationCode.interface'
+import { IFindByActivationCodeRepository } from '@/data/protocols/database/activation/FindByActivationCode.interface'
 import { IUpdateUserPasswordRepository } from '@/data/protocols/database/user/UpdateUserPassword.interface'
 import {
   ICreateUserPassword,

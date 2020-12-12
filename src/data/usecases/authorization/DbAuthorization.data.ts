@@ -2,7 +2,7 @@ import {
   IAuthorization,
   IAuthorizationResult,
 } from '@/domain/usecases/authorization/authorization.interface'
-import { IVerify } from '@/data/protocols/jwtAdapter/verifyJwt.interface'
+import { IVerify } from '@/data/protocols/jwtAdapter/VerifyJwt.interface'
 import { IFindUserByIdRepository } from '@/data/protocols/database/user/FindUserByIdRepository.interface'
 
 export class DbAuthorization implements IAuthorization {

@@ -1,5 +1,5 @@
-import { ISign } from '../protocols/jwtAdapter/signJwt.interface'
-import { IVerify } from '../protocols/jwtAdapter/verifyJwt.interface'
+import { ISign } from '../protocols/jwtAdapter/SignJwt.interface'
+import { IVerify } from '../protocols/jwtAdapter/VerifyJwt.interface'
 
 export class JwtSignAdapterStub implements ISign {
   sign(id: number): string {

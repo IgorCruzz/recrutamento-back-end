@@ -1,8 +1,8 @@
 import {
   ICreateActivationDTO,
   ICreateActivationRepository,
-} from '@/data/protocols/database/activation/createActivation.interface'
-import { IFindByActivationCodeRepository } from '@/data/protocols/database/activation/findByActivationCode.interface'
+} from '@/data/protocols/database/activation/CreateActivation.interface'
+import { IFindByActivationCodeRepository } from '@/data/protocols/database/activation/FindByActivationCode.interface'
 import { IActivationModel } from '@/domain/models/Activation.model'
 import { getRepository } from 'typeorm'
 import { Activation } from '../entities/Activation.entity'

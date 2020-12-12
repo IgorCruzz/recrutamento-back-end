@@ -1,6 +1,6 @@
 import { Router } from 'express'
 
-import createUser from './user/userCreate.route'
+import createUser from './user/UserCreate.route'
 import createPassword from './user/PasswordCreate.route'
 import signIn from './signin/Signin.route'
 import createResetPassword from './resetPassword/CreateResetPassword.route'

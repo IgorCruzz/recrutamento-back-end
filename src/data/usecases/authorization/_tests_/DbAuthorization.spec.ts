@@ -1,9 +1,9 @@
 import { JwtVerifydapterStub } from '@/data/mocks/Jwt.mock'
-import { FindUserByIdRepositoryStub } from '@/data/mocks/userRepo.mock'
+import { FindUserByIdRepositoryStub } from '@/data/mocks/UserRepo.mock'
 import { IFindUserByIdRepository } from '@/data/protocols/database/user/FindUserByIdRepository.interface'
-import { IVerify } from '@/data/protocols/jwtAdapter/verifyJwt.interface'
+import { IVerify } from '@/data/protocols/jwtAdapter/VerifyJwt.interface'
 import { IAuthorization } from '@/domain/usecases/authorization/authorization.interface'
-import { DbAuthorization } from '../dbAuthorization.data'
+import { DbAuthorization } from '../DbAuthorization.data'
 
 let authorizationData: IAuthorization
 let verifyRepository: IVerify

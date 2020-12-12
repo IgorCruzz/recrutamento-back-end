@@ -1,9 +1,9 @@
 import { BcryptCompareStub } from '@/data/mocks/Bcrypt.mock'
 import { JwtSignAdapterStub } from '@/data/mocks/Jwt.mock'
-import { FindUserByEmailRepositoryStub } from '@/data/mocks/userRepo.mock'
+import { FindUserByEmailRepositoryStub } from '@/data/mocks/UserRepo.mock'
 import { ICompare } from '@/data/protocols/bcryptAdapter/Compare.interface'
 import { IFindUserByEmailRepository } from '@/data/protocols/database/user/FindUserByEmail.interface'
-import { ISign } from '@/data/protocols/jwtAdapter/signJwt.interface'
+import { ISign } from '@/data/protocols/jwtAdapter/SignJwt.interface'
 import { ISignIn } from '@/domain/usecases/signin/signin.domain'
 import { DbSignIn } from '../DbSignin.data'
 

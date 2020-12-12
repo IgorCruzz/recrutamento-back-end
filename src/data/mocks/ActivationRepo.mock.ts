@@ -2,8 +2,8 @@ import { IActivationModel } from '@/domain/models/Activation.model'
 import {
   ICreateActivationDTO,
   ICreateActivationRepository,
-} from '../protocols/database/activation/createActivation.interface'
-import { IFindByActivationCodeRepository } from '../protocols/database/activation/findByActivationCode.interface'
+} from '../protocols/database/activation/CreateActivation.interface'
+import { IFindByActivationCodeRepository } from '../protocols/database/activation/FindByActivationCode.interface'
 
 export class CreateActivationStub implements ICreateActivationRepository {
   async create(data: ICreateActivationDTO): Promise<IActivationModel> {

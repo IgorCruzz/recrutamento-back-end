@@ -3,7 +3,7 @@ import { FindByUserIdRepositoryStub } from '@/data/mocks/ResetPassword.mock'
 import {
   FindUserByEmailRepositoryStub,
   UpdateUserPasswordRepositoryStub,
-} from '@/data/mocks/userRepo.mock'
+} from '@/data/mocks/UserRepo.mock'
 import { IHasher } from '@/data/protocols/bcryptAdapter/Hasher.interface'
 import { IFindByUserIdRepository } from '@/data/protocols/database/resetPassword/FindByUserId.interface'
 import { IFindUserByEmailRepository } from '@/data/protocols/database/user/FindUserByEmail.interface'

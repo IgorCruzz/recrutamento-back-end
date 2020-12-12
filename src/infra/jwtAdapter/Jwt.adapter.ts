@@ -1,7 +1,7 @@
 import 'dotenv'
-import { ISign } from '@/data/protocols/jwtAdapter/signJwt.interface'
+import { ISign } from '@/data/protocols/jwtAdapter/SignJwt.interface'
 import jwt from 'jsonwebtoken'
-import { IVerify } from '@/data/protocols/jwtAdapter/verifyJwt.interface'
+import { IVerify } from '@/data/protocols/jwtAdapter/VerifyJwt.interface'
 
 export class JwtAdapter implements ISign, IVerify {
   sign(id: number): string {

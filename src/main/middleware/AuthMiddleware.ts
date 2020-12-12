@@ -1,6 +1,6 @@
-import { DbAuthorization } from '../../data/usecases/authorization/dbAuthorization.data'
+import { DbAuthorization } from '../../data/usecases/authorization/DbAuthorization.data'
 import { UserRepository } from '../../infra/database/repositories/User.repository'
-import { JwtAdapter } from '../../infra/jwtAdapter/jwt.adapter'
+import { JwtAdapter } from '../../infra/jwtAdapter/Jwt.adapter'
 import { AuthMiddleware } from '../../presentation/middlewares/auth.middleware'
 
 export const authMiddleware = (): any => {

@@ -1,4 +1,4 @@
-import { IValidation } from '@/data/protocols/yupAdapter/validation.interface'
+import { IValidation } from '@/data/protocols/yupAdapter/Validation.interface'
 import {
   IHttpRequest,
   IHttpResponse,

@@ -1,5 +1,5 @@
 import { IGenerateCode } from '@/data/protocols/cryptoAdapter/GenerateCode.interface'
-import { ICreateActivationRepository } from '@/data/protocols/database/activation/createActivation.interface'
+import { ICreateActivationRepository } from '@/data/protocols/database/activation/CreateActivation.interface'
 import { ICreateUserRepository } from '@/data/protocols/database/user/CreateUser.interface'
 import { IFindUserByEmailRepository } from '@/data/protocols/database/user/FindUserByEmail.interface'
 import { IActivationUser } from '@/data/protocols/sendGridAdapter/ActivationMail.interface'

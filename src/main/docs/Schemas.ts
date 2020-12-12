@@ -4,10 +4,10 @@ import { UpdateResetPasswordParamSchema } from './schemas/params/resetPassword/U
 import { SigninParamSchema } from './schemas/params/signin/SigninParam.schema'
 import { createPasswordParamSchema } from './schemas/params/user/CreatePasswordParam.schema'
 import { createUserParamSchema } from './schemas/params/user/CreateUserParam.schema'
-import { createUserResultSchema } from './schemas/results/auth/CreateUser.schema'
-import { PasswordUserResultSchema } from './schemas/results/auth/PasswordUser.schema'
 import { signInResultSchema } from './schemas/results/auth/Signin.schema'
 import { updateResetPasswordResultSchema } from './schemas/results/resetPassword/UpdateResetPassword.schema'
+import { createUserResultSchema } from './schemas/results/User/CreateUser.schema'
+import { PasswordUserResultSchema } from './schemas/results/User/PasswordUser.schema'
 
 export default {
   error: errorSchema,

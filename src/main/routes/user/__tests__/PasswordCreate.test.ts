@@ -1,7 +1,7 @@
-import app from '../../../config/app'
+import app from '../../../config/App'
 import request from 'supertest'
 import { getRepository } from 'typeorm'
-import { connection } from '@/main/config/connection'
+import { connection } from '@/main/config/Connection'
 import { User } from '@/infra/database/entities/User.entity'
 import { Activation } from '@/infra/database/entities/Activation.entity'
 

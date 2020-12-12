@@ -1,7 +1,7 @@
 import {
   IValidation,
   IValidationResult,
-} from '@/data/protocols/yupAdapter/validation.interface'
+} from '@/data/protocols/yupAdapter/Validation.interface'
 import * as Yup from 'yup'
 
 export class UpdateResetPasswordValidation implements IValidation {

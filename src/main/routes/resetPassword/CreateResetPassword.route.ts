@@ -1,14 +1,14 @@
 import { Router } from 'express'
-import { adapRoute } from '../../adapters/express.adapter'
-import { adapMiddleware } from '../../adapters/expressMiddleware.adapter'
+import { adapRoute } from '../../adapters/Express.adapter'
+import { adapMiddleware } from '../../adapters/ExpressMiddleware.adapter'
 import { ICreateResetPassword } from '../../../domain/usecases/resetPassword/CreatePassword.domain'
 import { UserRepository } from '../../../infra/database/repositories/User.repository'
 import { DbCreateResetPassword } from '../../../data/usecases/resetPassword/DbCreateResetPassword.data'
 import { IController, IMiddleware } from '../../../presentation/protocols'
 import { ResetPasswordController } from '../../../presentation/controllers/resetPassword/ResetPassword.controller'
-import { ValidatorDecorator } from '../../../main/decorator/validator.decorator'
+import { ValidatorDecorator } from '../../../main/decorator/Validator.decorator'
 import { ResetPasswordRepository } from '../../../infra/database/repositories/ResetPassword.repository'
-import { SendGridAdapter } from '../../../infra/sendGridAdapter/sendgrid.adapter'
+import { SendGridAdapter } from '../../../infra/sendGridAdapter/Sendgrid.adapter'
 import { CreateResetPasswordValidation } from '../../../infra/yupAdapter/CreateResetPassword.validator'
 
 const routes = Router()

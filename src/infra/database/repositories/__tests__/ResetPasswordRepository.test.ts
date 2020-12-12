@@ -1,4 +1,4 @@
-import { connection } from '@/main/config/connection'
+import { connection } from '@/main/config/Connection'
 import { getRepository } from 'typeorm'
 import { ResetPassword } from '../../entities/ResetPassword.entity'
 import { User } from '../../entities/User.entity'

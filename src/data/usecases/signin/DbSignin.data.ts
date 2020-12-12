@@ -1,6 +1,6 @@
 import { ICompare } from '@/data/protocols/bcryptAdapter/Compare.interface'
 import { IFindUserByEmailRepository } from '@/data/protocols/database/user/FindUserByEmail.interface'
-import { ISign } from '@/data/protocols/jwtAdapter/signJwt.interface'
+import { ISign } from '@/data/protocols/jwtAdapter/SignJwt.interface'
 import {
   ISignIn,
   ISignInDTO,

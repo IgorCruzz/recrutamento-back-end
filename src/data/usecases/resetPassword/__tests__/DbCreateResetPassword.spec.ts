@@ -1,6 +1,6 @@
 import { CreateResetPasswordRepositoryStub } from '@/data/mocks/ResetPassword.mock'
-import { ResetPasswordStub } from '@/data/mocks/sendgrid.mock'
-import { FindUserByEmailRepositoryStub } from '@/data/mocks/userRepo.mock'
+import { ResetPasswordStub } from '@/data/mocks/Sendgrid.mock'
+import { FindUserByEmailRepositoryStub } from '@/data/mocks/UserRepo.mock'
 import { ICreateResetPasswordRepository } from '@/data/protocols/database/resetPassword/CreateUser.interface'
 import { IFindUserByEmailRepository } from '@/data/protocols/database/user/FindUserByEmail.interface'
 import { IResetPassword } from '@/data/protocols/sendGridAdapter/ResetPasswordMail.interface'
