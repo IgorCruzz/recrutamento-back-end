@@ -1,7 +1,7 @@
 Caso de sucesso ✅
 
 1.  ✅ Validar se existe um usuário com o e-mail passado.
-1.  ✅ Verificar se a senha do usuário com o e-mail passado tem o valor NULL.
+1.  ✅ Verificar se a senha do usuário com o e-mail passado tem o valor null.
 1.  ✅ Verificar se a senha passada está correta.
 1.  ✅ Criar uma código criptografado de autenticação.
 1.  ✅ Criar uma rota /POST para criar uma sessão
