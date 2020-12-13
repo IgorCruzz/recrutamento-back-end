@@ -10,6 +10,6 @@ Caso de sucesso ✅
 Exceções
 
 1.  ✅ Retorna 400 se não existir um usuário com o e-mail fornecido.
-1.  ✅ Retorna 400 se a senha tiver valor NULL.
+1.  ✅ Retorna 400 se a senha tiver valor null.
 1.  ✅ Retorna 400 se a senha tiver errada.
 1.  ✅ Retorna 500 se der erro ao tentar criar uma sessão.
