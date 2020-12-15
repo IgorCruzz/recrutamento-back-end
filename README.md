@@ -96,12 +96,26 @@ JWT_EXPIRESIN => (TEMPO LIMITE PARA EXPIRAR O TOKEN JWT)
 - [Prettier](https://prettier.io/)
 - [Jest](https://jestjs.io/)
 - [TypeORM](https://typeorm.io/)
+- [SendGrid](https://sendgrid.com/)
 
 </br>
 
 > ## :key: Getting Started
 >
 > **Follow the steps below**
+
+> ## :bar_chart: after All
+
+```bash
+Se você deseja testar esta aplicação localmente vai ser necessário criar uma conta no Sendgrid.
+(O motivo é que precisará dele para receber o código de authorization e de atualização de senha,
+por email.)
+-  Cadastre-se por este link -> (https://signup.sendgrid.com/)
+-  Crie um e-mail sender (Single Sender Verification) (https://app.sendgrid.com/settings/sender_auth)
+-  Crie uma integração do tipo Web API (https://app.sendgrid.com/guide/integrate)
+```
+
+</br>
 
 ```bash
   # Instale as dependencias
