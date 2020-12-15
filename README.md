@@ -20,7 +20,7 @@
 
 https://nuvemweb.herokuapp.com/api-docs/
 
-<img src="https://github.com/IgorCruzz/recrutamento-backend-end/blob/master/screenshots/swagger.jpg" alt="-" />
+<img src="https://github.com/IgorCruzz/recrutamento-back-end/blob/master/screenshots/swagger.jpg" alt="-" />
 
 </br>
 
