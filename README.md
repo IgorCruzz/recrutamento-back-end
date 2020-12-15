@@ -67,6 +67,18 @@ JWT_EXPIRESIN => (TEMPO LIMITE PARA EXPIRAR O TOKEN JWT)
 
 </br>
 
+> ## :hammer: Features
+
+```bash
+- Solid
+- Patterns: Decorator, Adapter
+- Clean Architecture
+
+```
+
+</br>
+
+
 > ## :hammer: Estrutura do projeto
 
 ```bash
@@ -81,6 +93,8 @@ JWT_EXPIRESIN => (TEMPO LIMITE PARA EXPIRAR O TOKEN JWT)
 ```
 
 </br>
+
+
 
 > ## :rocket: Tecnologias
 
