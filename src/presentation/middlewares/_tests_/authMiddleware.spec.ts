@@ -29,6 +29,23 @@ describe('Auth Middleware', () => {
     expect(res).toEqual(unauthorized('Insira o token.'))
   })
 
+  it('should be return if token doesnt belongs to any user', async () => {
+    jest
+      .spyOn(authData, 'auth')
+      .mockResolvedValue({ error: 'Este token não pertence a nenhum usuário.' })
+    const req: IHttpRequest = {
+      headers: {
+        authorization: 'Bearer token',
+      },
+    }
+
+    const res = await authController.handle(req)
+
+    expect(res).toEqual(
+      unauthorized('Este token não pertence a nenhum usuário.')
+    )
+  })
+
   it('should be to call authData with success', async () => {
     const res = jest.spyOn(authData, 'auth')
 

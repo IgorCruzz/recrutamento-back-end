@@ -29,6 +29,5 @@ export class ResetPasswordController implements IController {
     } catch (err) {
       return serverError(err)
     }
-    return await null
   }
 }
