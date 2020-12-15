@@ -1,5 +1,5 @@
 <h1>:desktop_computer: Backend</h1>
-
+<a href='https://coveralls.io/github/IgorCruzz/recrutamento-back-end?branch=master'><img src='https://coveralls.io/repos/github/IgorCruzz/recrutamento-back-end/badge.svg?branch=master' alt='Coverage Status' /></a>
 <p align="center">nuvemWEB - http://nuvem-web.herokuapp.com/</a></p>
 
 <p align="center">
